@@ -1,0 +1,1267 @@
+Loading /usr/share/sbt/bin/sbt-launch-lib.bash
+[0m[[0minfo[0m] [0mLoading project definition from /home/samuel/Documents/pl/CSCI-3155/lab5/project[0m
+[0m[[0minfo[0m] [0mSet current project to lab5 (in build file:/home/samuel/Documents/pl/CSCI-3155/lab5/)[0m
+[0m[[0minfo[0m] [0mSet current project to lab5-grader (in build file:/home/samuel/Documents/pl/CSCI-3155/lab5/)[0m
+[0m[[0minfo[0m] [0mRunning Lab5Grader [0m
+[36mRun starting. Expected test count is: 15[0m
+[32mLab5Grading:[0m
+[32mlab4-typeInfer/simple-programs[0m
+------------------------------------------------------------
+[Ref]Type checking: Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0)))) ...
+[Ref]Type: number
+------------------------------------------------------------
+Type checking: Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0)))) ...
+[31m- should type check JavaScripty programs according to the lab spec *** FAILED ***[0m
+[31m  scala.MatchError: Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0)))) (of class jsy.lab5.ast$Decl)[0m
+[31m  at Lab5$.typeInfer(Lab5.scala:83)[0m
+[31m  at Lab5$.inferType(Lab5.scala:337)[0m
+[31m  at Lab5Grading.assertRefInferType(Lab5Grading.scala:11)[0m
+[31m  at Lab5Grading$$anonfun$1.apply$mcV$sp(Lab5Grading.scala:36)[0m
+[31m  at Lab5Grading$$anonfun$1.apply(Lab5Grading.scala:35)[0m
+[31m  at Lab5Grading$$anonfun$1.apply(Lab5Grading.scala:35)[0m
+[31m  at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)[0m
+[31m  at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)[0m
+[31m  at org.scalatest.OutcomeOf$class.outcomeOf(OutcomeOf.scala:85)[0m
+[31m  at org.scalatest.OutcomeOf$.outcomeOf(OutcomeOf.scala:104)[0m
+[31m  ...[0m
+[32mlab4-typeInfer/recursive-programs[0m
+------------------------------------------------------------
+[Ref]Type checking: Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),Some(TNumber),If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(4.0)))) ...
+[Ref]Type: number
+------------------------------------------------------------
+Type checking: Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),Some(TNumber),If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(4.0)))) ...
+[31m- should type check recursive JavaScripty programs according to the lab spec *** FAILED ***[0m
+[31m  scala.MatchError: Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),Some(TNumber),If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(4.0)))) (of class jsy.lab5.ast$Decl)[0m
+[31m  at Lab5$.typeInfer(Lab5.scala:83)[0m
+[31m  at Lab5$.inferType(Lab5.scala:337)[0m
+[31m  at Lab5Grading.assertRefInferType(Lab5Grading.scala:11)[0m
+[31m  at Lab5Grading$$anonfun$2.apply$mcV$sp(Lab5Grading.scala:53)[0m
+[31m  at Lab5Grading$$anonfun$2.apply(Lab5Grading.scala:53)[0m
+[31m  at Lab5Grading$$anonfun$2.apply(Lab5Grading.scala:53)[0m
+[31m  at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)[0m
+[31m  at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)[0m
+[31m  at org.scalatest.OutcomeOf$class.outcomeOf(OutcomeOf.scala:85)[0m
+[31m  at org.scalatest.OutcomeOf$.outcomeOf(OutcomeOf.scala:104)[0m
+[31m  ...[0m
+[32mlab4-substitute/shadow[0m
+[31m- should substitute a value for uses of a variable *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.substitute(Lab5.scala:222)[0m
+[31m  at Lab5Grading$$anonfun$3$$anonfun$apply$mcV$sp$2.apply(Lab5Grading.scala:69)[0m
+[31m  at Lab5Grading$$anonfun$3$$anonfun$apply$mcV$sp$2.apply(Lab5Grading.scala:64)[0m
+[31m  at scala.collection.TraversableLike$WithFilter$$anonfun$foreach$1.apply(TraversableLike.scala:772)[0m
+[31m  at scala.collection.immutable.List.foreach(List.scala:318)[0m
+[31m  at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:771)[0m
+[31m  at Lab5Grading$$anonfun$3.apply$mcV$sp(Lab5Grading.scala:64)[0m
+[31m  at Lab5Grading$$anonfun$3.apply(Lab5Grading.scala:64)[0m
+[31m  at Lab5Grading$$anonfun$3.apply(Lab5Grading.scala:64)[0m
+[31m  at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)[0m
+[31m  ...[0m
+[32mlab4-step/simple-programs[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0))))
+[Ref]Step 1:
+  Map()
+  Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(3.0)))
+[Ref]Step 2:
+  Map()
+  If(Binary(Eq,N(3.0),N(0.0)),N(0.1),Binary(Plus,N(3.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0))))))
+[Ref]Step 3:
+  Map()
+  If(B(false),N(0.1),Binary(Plus,N(3.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0))))))
+[Ref]Step 4:
+  Map()
+  Binary(Plus,N(3.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0)))))
+[Ref]Step 5:
+  Map()
+  Binary(Plus,N(3.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(2.0))))
+[Ref]Step 6:
+  Map()
+  Binary(Plus,N(3.0),If(Binary(Eq,N(2.0),N(0.0)),N(0.1),Binary(Plus,N(2.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0)))))))
+[Ref]Step 7:
+  Map()
+  Binary(Plus,N(3.0),If(B(false),N(0.1),Binary(Plus,N(2.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0)))))))
+[Ref]Step 8:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0))))))
+[Ref]Step 9:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(1.0)))))
+[Ref]Step 10:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),If(Binary(Eq,N(1.0),N(0.0)),N(0.1),Binary(Plus,N(1.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0))))))))
+[Ref]Step 11:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),If(B(false),N(0.1),Binary(Plus,N(1.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0))))))))
+[Ref]Step 12:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0)))))))
+[Ref]Step 13:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(0.0))))))
+[Ref]Step 14:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),If(Binary(Eq,N(0.0),N(0.0)),N(0.1),Binary(Plus,N(0.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(0.0),N(1.0)))))))))
+[Ref]Step 15:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),If(B(true),N(0.1),Binary(Plus,N(0.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(0.0),N(1.0)))))))))
+[Ref]Step 16:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),N(0.1))))
+[Ref]Step 17:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),N(1.1)))
+[Ref]Step 18:
+  Map()
+  Binary(Plus,N(3.0),N(3.1))
+[Ref]Result:
+  Map()
+  N(6.1)
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0))))
+[31m- should evaluate JavaScripty programs according to the lab spec *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.step(Lab5.scala:290)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:359)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:357)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:129)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:127)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:117)[0m
+[31m  at Lab5$.iterateStep(Lab5.scala:368)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:28)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:32)[0m
+[31m  at Lab5Grading$$anonfun$4.apply$mcV$sp(Lab5Grading.scala:74)[0m
+[31m  ...[0m
+[32mlab4-step/recursive-programs[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(3.0))))
+[Ref]Step 1:
+  Map()
+  Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(3.0)))
+[Ref]Step 2:
+  Map()
+  If(Binary(Eq,N(3.0),N(0.0)),N(1.0),Binary(Times,N(3.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0))))))
+[Ref]Step 3:
+  Map()
+  If(B(false),N(1.0),Binary(Times,N(3.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0))))))
+[Ref]Step 4:
+  Map()
+  Binary(Times,N(3.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0)))))
+[Ref]Step 5:
+  Map()
+  Binary(Times,N(3.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(2.0))))
+[Ref]Step 6:
+  Map()
+  Binary(Times,N(3.0),If(Binary(Eq,N(2.0),N(0.0)),N(1.0),Binary(Times,N(2.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0)))))))
+[Ref]Step 7:
+  Map()
+  Binary(Times,N(3.0),If(B(false),N(1.0),Binary(Times,N(2.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0)))))))
+[Ref]Step 8:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0))))))
+[Ref]Step 9:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(1.0)))))
+[Ref]Step 10:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),If(Binary(Eq,N(1.0),N(0.0)),N(1.0),Binary(Times,N(1.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0))))))))
+[Ref]Step 11:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),If(B(false),N(1.0),Binary(Times,N(1.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0))))))))
+[Ref]Step 12:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0)))))))
+[Ref]Step 13:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(0.0))))))
+[Ref]Step 14:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),If(Binary(Eq,N(0.0),N(0.0)),N(1.0),Binary(Times,N(0.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(0.0),N(1.0)))))))))
+[Ref]Step 15:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),If(B(true),N(1.0),Binary(Times,N(0.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(0.0),N(1.0)))))))))
+[Ref]Step 16:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),N(1.0))))
+[Ref]Step 17:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),N(1.0)))
+[Ref]Step 18:
+  Map()
+  Binary(Times,N(3.0),N(2.0))
+[Ref]Result:
+  Map()
+  N(6.0)
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(3.0))))
+[31m- should evaluate recursive JavaScripty programs according to the lab spec *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.step(Lab5.scala:290)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:359)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:357)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:129)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:127)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:117)[0m
+[31m  at Lab5$.iterateStep(Lab5.scala:368)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:28)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:32)[0m
+[31m  at Lab5Grading$$anonfun$5.apply$mcV$sp(Lab5Grading.scala:109)[0m
+[31m  ...[0m
+[32mlab4-step/objects[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Decl(MConst,pair,Function(None,Left(List((x,TNumber), (y,TNumber))),None,Obj(Map(x -> Var(x), y -> Var(y)))),Decl(MConst,p,Call(Var(pair),List(N(3.0), N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y))))
+[Ref]Step 1:
+  Map()
+  Decl(MConst,p,Call(Function(None,Left(List((x,TNumber), (y,TNumber))),None,Obj(Map(x -> Var(x), y -> Var(y)))),List(N(3.0), N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y)))
+[Ref]Step 2:
+  Map()
+  Decl(MConst,p,Obj(Map(x -> N(3.0), y -> N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y)))
+[Ref]Step 3:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  Decl(MConst,p,A(1),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y)))
+[Ref]Step 4:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  Binary(Plus,GetField(A(1),x),GetField(A(1),y))
+[Ref]Step 5:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  Binary(Plus,N(3.0),GetField(A(1),y))
+[Ref]Step 6:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  Binary(Plus,N(3.0),N(4.0))
+[Ref]Result:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  N(7.0)
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Decl(MConst,pair,Function(None,Left(List((x,TNumber), (y,TNumber))),None,Obj(Map(x -> Var(x), y -> Var(y)))),Decl(MConst,p,Call(Var(pair),List(N(3.0), N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y))))
+[31m- should evaluate JavaScripty objects according to the lab spec *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.step(Lab5.scala:290)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:359)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:357)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:129)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:127)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:117)[0m
+[31m  at Lab5$.iterateStep(Lab5.scala:368)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:28)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:32)[0m
+[31m  at Lab5Grading$$anonfun$6.apply$mcV$sp(Lab5Grading.scala:131)[0m
+[31m  ...[0m
+[32mcastOk[0m
+[31m- should permit widening and narrowing width of objects with casting *** FAILED ***[0m
+[31m  { f: number } -cast-> { f: number; g: string } (Lab5Grading.scala:157)[0m
+[32mtypeInfer/functions[0m
+------------------------------------------------------------
+Type checking: Function(None,Left(List((x,TNumber), (y,TNumber))),None,Var(x)) ...
+[31m- should type check JavaScripty function expressions according to the lab spec *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.typeInfer(Lab5.scala:168)[0m
+[31m  at Lab5$.inferType(Lab5.scala:337)[0m
+[31m  at Lab5Grading$$anonfun$8$$anonfun$apply$mcV$sp$4.apply(Lab5Grading.scala:174)[0m
+[31m  at Lab5Grading$$anonfun$8$$anonfun$apply$mcV$sp$4.apply(Lab5Grading.scala:166)[0m
+[31m  at scala.collection.TraversableLike$WithFilter$$anonfun$foreach$1.apply(TraversableLike.scala:772)[0m
+[31m  at scala.collection.immutable.List.foreach(List.scala:318)[0m
+[31m  at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:771)[0m
+[31m  at Lab5Grading$$anonfun$8.apply$mcV$sp(Lab5Grading.scala:166)[0m
+[31m  at Lab5Grading$$anonfun$8.apply(Lab5Grading.scala:166)[0m
+[31m  at Lab5Grading$$anonfun$8.apply(Lab5Grading.scala:166)[0m
+[31m  ...[0m
+[32mtypeInfer/badcall[0m
+------------------------------------------------------------
+Type checking: Call(Function(None,Left(List((x,TNumber), (y,TNumber))),None,Var(x)),List(N(4.0))) ...
+[31m- should yield a static type error *** FAILED ***[0m
+[31m  Expected exception jsy.lab5.ast$StaticTypeError to be thrown, but java.lang.UnsupportedOperationException was thrown. (Lab5Grading.scala:184)[0m
+[32mtypeInfer/badcast[0m
+------------------------------------------------------------
+Type checking: Unary(Cast(TNumber),B(true)) ...
+[31m- should yield a static type error *** FAILED ***[0m
+[31m  Expected exception jsy.lab5.ast$StaticTypeError to be thrown, but scala.MatchError was thrown. (Lab5Grading.scala:197)[0m
+[32mtypeInfer/assign[0m
+------------------------------------------------------------
+Type checking: Null ...
+[31m- should type check JavaScripty assignment expressions according to the lab spec *** FAILED ***[0m
+[31m  scala.MatchError: Null (of class jsy.lab5.ast$Null$)[0m
+[31m  at Lab5$.typeInfer(Lab5.scala:83)[0m
+[31m  at Lab5$.inferType(Lab5.scala:337)[0m
+[31m  at Lab5Grading$$anonfun$11$$anonfun$apply$mcV$sp$8.apply(Lab5Grading.scala:218)[0m
+[31m  at Lab5Grading$$anonfun$11$$anonfun$apply$mcV$sp$8.apply(Lab5Grading.scala:217)[0m
+[31m  at scala.collection.TraversableLike$WithFilter$$anonfun$foreach$1.apply(TraversableLike.scala:772)[0m
+[31m  at scala.collection.immutable.List.foreach(List.scala:318)[0m
+[31m  at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:771)[0m
+[31m  at Lab5Grading$$anonfun$11.apply$mcV$sp(Lab5Grading.scala:217)[0m
+[31m  at Lab5Grading$$anonfun$11.apply(Lab5Grading.scala:217)[0m
+[31m  at Lab5Grading$$anonfun$11.apply(Lab5Grading.scala:217)[0m
+[31m  ...[0m
+[32mtypeInfer/badassign[0m
+------------------------------------------------------------
+Type checking: Assign(N(3.0),N(4.0)) ...
+[31m- should yield a static type error *** FAILED ***[0m
+[31m  Expected exception jsy.lab5.ast$StaticTypeError to be thrown, but scala.MatchError was thrown. (Lab5Grading.scala:229)[0m
+[32msubstitute/avoidcapture[0m
+[31m- should avoid capturing free variables *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.substitute(Lab5.scala:222)[0m
+[31m  at Lab5Grading$$anonfun$13$$anonfun$apply$mcV$sp$11.apply(Lab5Grading.scala:239)[0m
+[31m  at Lab5Grading$$anonfun$13$$anonfun$apply$mcV$sp$11.apply(Lab5Grading.scala:236)[0m
+[31m  at scala.collection.TraversableLike$WithFilter$$anonfun$foreach$1.apply(TraversableLike.scala:772)[0m
+[31m  at scala.collection.immutable.List.foreach(List.scala:318)[0m
+[31m  at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:771)[0m
+[31m  at Lab5Grading$$anonfun$13.apply$mcV$sp(Lab5Grading.scala:236)[0m
+[31m  at Lab5Grading$$anonfun$13.apply(Lab5Grading.scala:236)[0m
+[31m  at Lab5Grading$$anonfun$13.apply(Lab5Grading.scala:236)[0m
+[31m  at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)[0m
+[31m  ...[0m
+[32mstep/parampassing[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Decl(MVar,x,N(1.0),Decl(MConst,f,Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),Binary(Plus,Call(Var(f),List(Var(x))),Var(x))))
+[Ref]Step 1:
+  Map(A(1) -> N(1.0))
+  Decl(MConst,f,Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),Binary(Plus,Call(Var(f),List(Unary(Deref,A(1)))),Unary(Deref,A(1))))
+[Ref]Step 2:
+  Map(A(1) -> N(1.0))
+  Binary(Plus,Call(Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),List(Unary(Deref,A(1)))),Unary(Deref,A(1)))
+[Ref]Step 3:
+  Map(A(1) -> N(1.0))
+  Binary(Plus,Call(Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),List(N(1.0))),Unary(Deref,A(1)))
+[Ref]Step 4:
+  Map(A(1) -> N(1.0), A(2) -> N(1.0))
+  Binary(Plus,Assign(Unary(Deref,A(2)),Binary(Plus,Unary(Deref,A(2)),Unary(Deref,A(2)))),Unary(Deref,A(1)))
+[Ref]Step 5:
+  Map(A(1) -> N(1.0), A(2) -> N(1.0))
+  Binary(Plus,Assign(Unary(Deref,A(2)),Binary(Plus,N(1.0),Unary(Deref,A(2)))),Unary(Deref,A(1)))
+[Ref]Step 6:
+  Map(A(1) -> N(1.0), A(2) -> N(1.0))
+  Binary(Plus,Assign(Unary(Deref,A(2)),Binary(Plus,N(1.0),N(1.0))),Unary(Deref,A(1)))
+[Ref]Step 7:
+  Map(A(1) -> N(1.0), A(2) -> N(1.0))
+  Binary(Plus,Assign(Unary(Deref,A(2)),N(2.0)),Unary(Deref,A(1)))
+[Ref]Step 8:
+  Map(A(1) -> N(1.0), A(2) -> N(2.0))
+  Binary(Plus,N(2.0),Unary(Deref,A(1)))
+[Ref]Step 9:
+  Map(A(1) -> N(1.0), A(2) -> N(2.0))
+  Binary(Plus,N(2.0),N(1.0))
+[Ref]Result:
+  Map(A(1) -> N(1.0), A(2) -> N(2.0))
+  N(3.0)
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Decl(MVar,x,N(1.0),Decl(MConst,f,Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),Binary(Plus,Call(Var(f),List(Var(x))),Var(x))))
+[31m- should evaluate JavaScripty parameter passing according to the lab spec *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.step(Lab5.scala:292)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:359)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:357)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:129)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:127)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:117)[0m
+[31m  at Lab5$.iterateStep(Lab5.scala:368)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:28)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:32)[0m
+[31m  at Lab5Grading$$anonfun$14.apply$mcV$sp(Lab5Grading.scala:244)[0m
+[31m  ...[0m
+[32mstep/assign[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Result:
+  Map()
+  Null
+------------------------------------------------------------
+Evaluating with step ...
+Result:
+  Map()
+  Null
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Unary(Cast(TInterface(Top,TObj(Map()))),Null)
+[Ref]Result:
+  Map()
+  Null
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Unary(Cast(TInterface(Top,TObj(Map()))),Null)
+[31m- should evaluate JavaScripty assignment expressions according to the lab spec *** FAILED ***[0m
+[31m  java.lang.IllegalArgumentException: requirement failed: stepping on a value: Null[0m
+[31m  at scala.Predef$.require(Predef.scala:233)[0m
+[31m  at Lab5$.step(Lab5.scala:243)[0m
+[31m  at Lab5$.step(Lab5.scala:306)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:359)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:357)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:129)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:127)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:117)[0m
+[31m  at Lab5$.iterateStep(Lab5.scala:368)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:28)[0m
+[31m  ...[0m
+[36mRun completed in 405 milliseconds.[0m
+[36mTotal number of tests run: 15[0m
+[36mSuites: completed 1, aborted 0[0m
+[36mTests: succeeded 0, failed 15, canceled 0, ignored 0, pending 0[0m
+[31m*** 15 TESTS FAILED ***[0m
+[0m[[32msuccess[0m] [0mTotal time: 2 s, completed Mar 31, 2014 8:55:55 PM[0m
+Loading /usr/share/sbt/bin/sbt-launch-lib.bash
+[0m[[0minfo[0m] [0mLoading project definition from /home/samuel/Documents/pl/CSCI-3155/lab5/project[0m
+[0m[[0minfo[0m] [0mSet current project to lab5 (in build file:/home/samuel/Documents/pl/CSCI-3155/lab5/)[0m
+[0m[[0minfo[0m] [0mSet current project to lab5-grader (in build file:/home/samuel/Documents/pl/CSCI-3155/lab5/)[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/samuel/Documents/pl/CSCI-3155/lab5/target/scala-2.10/classes...[0m
+[0m[[0minfo[0m] [0mRunning Lab5Grader [0m
+[36mRun starting. Expected test count is: 15[0m
+[32mLab5Grading:[0m
+[32mlab4-typeInfer/simple-programs[0m
+------------------------------------------------------------
+[Ref]Type checking: Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0)))) ...
+[Ref]Type: number
+------------------------------------------------------------
+Type checking: Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0)))) ...
+[31m- should type check JavaScripty programs according to the lab spec *** FAILED ***[0m
+[31m  scala.MatchError: Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0)))) (of class jsy.lab5.ast$Decl)[0m
+[31m  at Lab5$.typeInfer(Lab5.scala:86)[0m
+[31m  at Lab5$.inferType(Lab5.scala:340)[0m
+[31m  at Lab5Grading.assertRefInferType(Lab5Grading.scala:11)[0m
+[31m  at Lab5Grading$$anonfun$1.apply$mcV$sp(Lab5Grading.scala:36)[0m
+[31m  at Lab5Grading$$anonfun$1.apply(Lab5Grading.scala:35)[0m
+[31m  at Lab5Grading$$anonfun$1.apply(Lab5Grading.scala:35)[0m
+[31m  at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)[0m
+[31m  at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)[0m
+[31m  at org.scalatest.OutcomeOf$class.outcomeOf(OutcomeOf.scala:85)[0m
+[31m  at org.scalatest.OutcomeOf$.outcomeOf(OutcomeOf.scala:104)[0m
+[31m  ...[0m
+[32mlab4-typeInfer/recursive-programs[0m
+------------------------------------------------------------
+[Ref]Type checking: Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),Some(TNumber),If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(4.0)))) ...
+[Ref]Type: number
+------------------------------------------------------------
+Type checking: Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),Some(TNumber),If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(4.0)))) ...
+[31m- should type check recursive JavaScripty programs according to the lab spec *** FAILED ***[0m
+[31m  scala.MatchError: Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),Some(TNumber),If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(4.0)))) (of class jsy.lab5.ast$Decl)[0m
+[31m  at Lab5$.typeInfer(Lab5.scala:86)[0m
+[31m  at Lab5$.inferType(Lab5.scala:340)[0m
+[31m  at Lab5Grading.assertRefInferType(Lab5Grading.scala:11)[0m
+[31m  at Lab5Grading$$anonfun$2.apply$mcV$sp(Lab5Grading.scala:53)[0m
+[31m  at Lab5Grading$$anonfun$2.apply(Lab5Grading.scala:53)[0m
+[31m  at Lab5Grading$$anonfun$2.apply(Lab5Grading.scala:53)[0m
+[31m  at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)[0m
+[31m  at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)[0m
+[31m  at org.scalatest.OutcomeOf$class.outcomeOf(OutcomeOf.scala:85)[0m
+[31m  at org.scalatest.OutcomeOf$.outcomeOf(OutcomeOf.scala:104)[0m
+[31m  ...[0m
+[32mlab4-substitute/shadow[0m
+[31m- should substitute a value for uses of a variable *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.substitute(Lab5.scala:225)[0m
+[31m  at Lab5Grading$$anonfun$3$$anonfun$apply$mcV$sp$2.apply(Lab5Grading.scala:69)[0m
+[31m  at Lab5Grading$$anonfun$3$$anonfun$apply$mcV$sp$2.apply(Lab5Grading.scala:64)[0m
+[31m  at scala.collection.TraversableLike$WithFilter$$anonfun$foreach$1.apply(TraversableLike.scala:772)[0m
+[31m  at scala.collection.immutable.List.foreach(List.scala:318)[0m
+[31m  at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:771)[0m
+[31m  at Lab5Grading$$anonfun$3.apply$mcV$sp(Lab5Grading.scala:64)[0m
+[31m  at Lab5Grading$$anonfun$3.apply(Lab5Grading.scala:64)[0m
+[31m  at Lab5Grading$$anonfun$3.apply(Lab5Grading.scala:64)[0m
+[31m  at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)[0m
+[31m  ...[0m
+[32mlab4-step/simple-programs[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0))))
+[Ref]Step 1:
+  Map()
+  Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(3.0)))
+[Ref]Step 2:
+  Map()
+  If(Binary(Eq,N(3.0),N(0.0)),N(0.1),Binary(Plus,N(3.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0))))))
+[Ref]Step 3:
+  Map()
+  If(B(false),N(0.1),Binary(Plus,N(3.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0))))))
+[Ref]Step 4:
+  Map()
+  Binary(Plus,N(3.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0)))))
+[Ref]Step 5:
+  Map()
+  Binary(Plus,N(3.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(2.0))))
+[Ref]Step 6:
+  Map()
+  Binary(Plus,N(3.0),If(Binary(Eq,N(2.0),N(0.0)),N(0.1),Binary(Plus,N(2.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0)))))))
+[Ref]Step 7:
+  Map()
+  Binary(Plus,N(3.0),If(B(false),N(0.1),Binary(Plus,N(2.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0)))))))
+[Ref]Step 8:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0))))))
+[Ref]Step 9:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(1.0)))))
+[Ref]Step 10:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),If(Binary(Eq,N(1.0),N(0.0)),N(0.1),Binary(Plus,N(1.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0))))))))
+[Ref]Step 11:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),If(B(false),N(0.1),Binary(Plus,N(1.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0))))))))
+[Ref]Step 12:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0)))))))
+[Ref]Step 13:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(0.0))))))
+[Ref]Step 14:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),If(Binary(Eq,N(0.0),N(0.0)),N(0.1),Binary(Plus,N(0.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(0.0),N(1.0)))))))))
+[Ref]Step 15:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),If(B(true),N(0.1),Binary(Plus,N(0.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(0.0),N(1.0)))))))))
+[Ref]Step 16:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),N(0.1))))
+[Ref]Step 17:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),N(1.1)))
+[Ref]Step 18:
+  Map()
+  Binary(Plus,N(3.0),N(3.1))
+[Ref]Result:
+  Map()
+  N(6.1)
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0))))
+[31m- should evaluate JavaScripty programs according to the lab spec *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.step(Lab5.scala:293)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:362)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:360)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:129)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:127)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:117)[0m
+[31m  at Lab5$.iterateStep(Lab5.scala:371)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:28)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:32)[0m
+[31m  at Lab5Grading$$anonfun$4.apply$mcV$sp(Lab5Grading.scala:74)[0m
+[31m  ...[0m
+[32mlab4-step/recursive-programs[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(3.0))))
+[Ref]Step 1:
+  Map()
+  Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(3.0)))
+[Ref]Step 2:
+  Map()
+  If(Binary(Eq,N(3.0),N(0.0)),N(1.0),Binary(Times,N(3.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0))))))
+[Ref]Step 3:
+  Map()
+  If(B(false),N(1.0),Binary(Times,N(3.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0))))))
+[Ref]Step 4:
+  Map()
+  Binary(Times,N(3.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0)))))
+[Ref]Step 5:
+  Map()
+  Binary(Times,N(3.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(2.0))))
+[Ref]Step 6:
+  Map()
+  Binary(Times,N(3.0),If(Binary(Eq,N(2.0),N(0.0)),N(1.0),Binary(Times,N(2.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0)))))))
+[Ref]Step 7:
+  Map()
+  Binary(Times,N(3.0),If(B(false),N(1.0),Binary(Times,N(2.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0)))))))
+[Ref]Step 8:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0))))))
+[Ref]Step 9:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(1.0)))))
+[Ref]Step 10:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),If(Binary(Eq,N(1.0),N(0.0)),N(1.0),Binary(Times,N(1.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0))))))))
+[Ref]Step 11:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),If(B(false),N(1.0),Binary(Times,N(1.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0))))))))
+[Ref]Step 12:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0)))))))
+[Ref]Step 13:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(0.0))))))
+[Ref]Step 14:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),If(Binary(Eq,N(0.0),N(0.0)),N(1.0),Binary(Times,N(0.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(0.0),N(1.0)))))))))
+[Ref]Step 15:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),If(B(true),N(1.0),Binary(Times,N(0.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(0.0),N(1.0)))))))))
+[Ref]Step 16:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),N(1.0))))
+[Ref]Step 17:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),N(1.0)))
+[Ref]Step 18:
+  Map()
+  Binary(Times,N(3.0),N(2.0))
+[Ref]Result:
+  Map()
+  N(6.0)
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(3.0))))
+[31m- should evaluate recursive JavaScripty programs according to the lab spec *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.step(Lab5.scala:293)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:362)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:360)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:129)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:127)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:117)[0m
+[31m  at Lab5$.iterateStep(Lab5.scala:371)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:28)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:32)[0m
+[31m  at Lab5Grading$$anonfun$5.apply$mcV$sp(Lab5Grading.scala:109)[0m
+[31m  ...[0m
+[32mlab4-step/objects[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Decl(MConst,pair,Function(None,Left(List((x,TNumber), (y,TNumber))),None,Obj(Map(x -> Var(x), y -> Var(y)))),Decl(MConst,p,Call(Var(pair),List(N(3.0), N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y))))
+[Ref]Step 1:
+  Map()
+  Decl(MConst,p,Call(Function(None,Left(List((x,TNumber), (y,TNumber))),None,Obj(Map(x -> Var(x), y -> Var(y)))),List(N(3.0), N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y)))
+[Ref]Step 2:
+  Map()
+  Decl(MConst,p,Obj(Map(x -> N(3.0), y -> N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y)))
+[Ref]Step 3:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  Decl(MConst,p,A(1),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y)))
+[Ref]Step 4:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  Binary(Plus,GetField(A(1),x),GetField(A(1),y))
+[Ref]Step 5:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  Binary(Plus,N(3.0),GetField(A(1),y))
+[Ref]Step 6:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  Binary(Plus,N(3.0),N(4.0))
+[Ref]Result:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  N(7.0)
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Decl(MConst,pair,Function(None,Left(List((x,TNumber), (y,TNumber))),None,Obj(Map(x -> Var(x), y -> Var(y)))),Decl(MConst,p,Call(Var(pair),List(N(3.0), N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y))))
+[31m- should evaluate JavaScripty objects according to the lab spec *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.step(Lab5.scala:293)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:362)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:360)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:129)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:127)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:117)[0m
+[31m  at Lab5$.iterateStep(Lab5.scala:371)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:28)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:32)[0m
+[31m  at Lab5Grading$$anonfun$6.apply$mcV$sp(Lab5Grading.scala:131)[0m
+[31m  ...[0m
+[32mcastOk[0m
+CASTING
+TObj(Map(f -> TNumber))
+TObj(Map(f -> TNumber, g -> TString))
+CASTING
+TObj(Map(f -> TNumber, g -> TString))
+TObj(Map(f -> TNumber))
+CASTING
+TObj(Map(f -> TNumber, g -> TString))
+TObj(Map())
+[31m- should permit widening and narrowing width of objects with casting *** FAILED ***[0m
+[31m  { f: number } -cast-> { f: number; g: string } (Lab5Grading.scala:157)[0m
+[32mtypeInfer/functions[0m
+------------------------------------------------------------
+Type checking: Function(None,Left(List((x,TNumber), (y,TNumber))),None,Var(x)) ...
+[31m- should type check JavaScripty function expressions according to the lab spec *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.typeInfer(Lab5.scala:171)[0m
+[31m  at Lab5$.inferType(Lab5.scala:340)[0m
+[31m  at Lab5Grading$$anonfun$8$$anonfun$apply$mcV$sp$4.apply(Lab5Grading.scala:174)[0m
+[31m  at Lab5Grading$$anonfun$8$$anonfun$apply$mcV$sp$4.apply(Lab5Grading.scala:166)[0m
+[31m  at scala.collection.TraversableLike$WithFilter$$anonfun$foreach$1.apply(TraversableLike.scala:772)[0m
+[31m  at scala.collection.immutable.List.foreach(List.scala:318)[0m
+[31m  at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:771)[0m
+[31m  at Lab5Grading$$anonfun$8.apply$mcV$sp(Lab5Grading.scala:166)[0m
+[31m  at Lab5Grading$$anonfun$8.apply(Lab5Grading.scala:166)[0m
+[31m  at Lab5Grading$$anonfun$8.apply(Lab5Grading.scala:166)[0m
+[31m  ...[0m
+[32mtypeInfer/badcall[0m
+------------------------------------------------------------
+Type checking: Call(Function(None,Left(List((x,TNumber), (y,TNumber))),None,Var(x)),List(N(4.0))) ...
+[31m- should yield a static type error *** FAILED ***[0m
+[31m  Expected exception jsy.lab5.ast$StaticTypeError to be thrown, but java.lang.UnsupportedOperationException was thrown. (Lab5Grading.scala:184)[0m
+[32mtypeInfer/badcast[0m
+------------------------------------------------------------
+Type checking: Unary(Cast(TNumber),B(true)) ...
+[31m- should yield a static type error *** FAILED ***[0m
+[31m  Expected exception jsy.lab5.ast$StaticTypeError to be thrown, but scala.MatchError was thrown. (Lab5Grading.scala:197)[0m
+[32mtypeInfer/assign[0m
+------------------------------------------------------------
+Type checking: Null ...
+[31m- should type check JavaScripty assignment expressions according to the lab spec *** FAILED ***[0m
+[31m  scala.MatchError: Null (of class jsy.lab5.ast$Null$)[0m
+[31m  at Lab5$.typeInfer(Lab5.scala:86)[0m
+[31m  at Lab5$.inferType(Lab5.scala:340)[0m
+[31m  at Lab5Grading$$anonfun$11$$anonfun$apply$mcV$sp$8.apply(Lab5Grading.scala:218)[0m
+[31m  at Lab5Grading$$anonfun$11$$anonfun$apply$mcV$sp$8.apply(Lab5Grading.scala:217)[0m
+[31m  at scala.collection.TraversableLike$WithFilter$$anonfun$foreach$1.apply(TraversableLike.scala:772)[0m
+[31m  at scala.collection.immutable.List.foreach(List.scala:318)[0m
+[31m  at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:771)[0m
+[31m  at Lab5Grading$$anonfun$11.apply$mcV$sp(Lab5Grading.scala:217)[0m
+[31m  at Lab5Grading$$anonfun$11.apply(Lab5Grading.scala:217)[0m
+[31m  at Lab5Grading$$anonfun$11.apply(Lab5Grading.scala:217)[0m
+[31m  ...[0m
+[32mtypeInfer/badassign[0m
+------------------------------------------------------------
+Type checking: Assign(N(3.0),N(4.0)) ...
+[31m- should yield a static type error *** FAILED ***[0m
+[31m  Expected exception jsy.lab5.ast$StaticTypeError to be thrown, but scala.MatchError was thrown. (Lab5Grading.scala:229)[0m
+[32msubstitute/avoidcapture[0m
+[31m- should avoid capturing free variables *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.substitute(Lab5.scala:225)[0m
+[31m  at Lab5Grading$$anonfun$13$$anonfun$apply$mcV$sp$11.apply(Lab5Grading.scala:239)[0m
+[31m  at Lab5Grading$$anonfun$13$$anonfun$apply$mcV$sp$11.apply(Lab5Grading.scala:236)[0m
+[31m  at scala.collection.TraversableLike$WithFilter$$anonfun$foreach$1.apply(TraversableLike.scala:772)[0m
+[31m  at scala.collection.immutable.List.foreach(List.scala:318)[0m
+[31m  at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:771)[0m
+[31m  at Lab5Grading$$anonfun$13.apply$mcV$sp(Lab5Grading.scala:236)[0m
+[31m  at Lab5Grading$$anonfun$13.apply(Lab5Grading.scala:236)[0m
+[31m  at Lab5Grading$$anonfun$13.apply(Lab5Grading.scala:236)[0m
+[31m  at org.scalatest.Transformer$$anonfun$apply$1.apply(Transformer.scala:22)[0m
+[31m  ...[0m
+[32mstep/parampassing[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Decl(MVar,x,N(1.0),Decl(MConst,f,Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),Binary(Plus,Call(Var(f),List(Var(x))),Var(x))))
+[Ref]Step 1:
+  Map(A(1) -> N(1.0))
+  Decl(MConst,f,Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),Binary(Plus,Call(Var(f),List(Unary(Deref,A(1)))),Unary(Deref,A(1))))
+[Ref]Step 2:
+  Map(A(1) -> N(1.0))
+  Binary(Plus,Call(Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),List(Unary(Deref,A(1)))),Unary(Deref,A(1)))
+[Ref]Step 3:
+  Map(A(1) -> N(1.0))
+  Binary(Plus,Call(Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),List(N(1.0))),Unary(Deref,A(1)))
+[Ref]Step 4:
+  Map(A(1) -> N(1.0), A(2) -> N(1.0))
+  Binary(Plus,Assign(Unary(Deref,A(2)),Binary(Plus,Unary(Deref,A(2)),Unary(Deref,A(2)))),Unary(Deref,A(1)))
+[Ref]Step 5:
+  Map(A(1) -> N(1.0), A(2) -> N(1.0))
+  Binary(Plus,Assign(Unary(Deref,A(2)),Binary(Plus,N(1.0),Unary(Deref,A(2)))),Unary(Deref,A(1)))
+[Ref]Step 6:
+  Map(A(1) -> N(1.0), A(2) -> N(1.0))
+  Binary(Plus,Assign(Unary(Deref,A(2)),Binary(Plus,N(1.0),N(1.0))),Unary(Deref,A(1)))
+[Ref]Step 7:
+  Map(A(1) -> N(1.0), A(2) -> N(1.0))
+  Binary(Plus,Assign(Unary(Deref,A(2)),N(2.0)),Unary(Deref,A(1)))
+[Ref]Step 8:
+  Map(A(1) -> N(1.0), A(2) -> N(2.0))
+  Binary(Plus,N(2.0),Unary(Deref,A(1)))
+[Ref]Step 9:
+  Map(A(1) -> N(1.0), A(2) -> N(2.0))
+  Binary(Plus,N(2.0),N(1.0))
+[Ref]Result:
+  Map(A(1) -> N(1.0), A(2) -> N(2.0))
+  N(3.0)
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Decl(MVar,x,N(1.0),Decl(MConst,f,Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),Binary(Plus,Call(Var(f),List(Var(x))),Var(x))))
+[31m- should evaluate JavaScripty parameter passing according to the lab spec *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.step(Lab5.scala:295)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:362)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:360)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:129)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:127)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:117)[0m
+[31m  at Lab5$.iterateStep(Lab5.scala:371)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:28)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:32)[0m
+[31m  at Lab5Grading$$anonfun$14.apply$mcV$sp(Lab5Grading.scala:244)[0m
+[31m  ...[0m
+[32mstep/assign[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Result:
+  Map()
+  Null
+------------------------------------------------------------
+Evaluating with step ...
+Result:
+  Map()
+  Null
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Unary(Cast(TInterface(Top,TObj(Map()))),Null)
+[Ref]Result:
+  Map()
+  Null
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Unary(Cast(TInterface(Top,TObj(Map()))),Null)
+[31m- should evaluate JavaScripty assignment expressions according to the lab spec *** FAILED ***[0m
+[31m  java.lang.IllegalArgumentException: requirement failed: stepping on a value: Null[0m
+[31m  at scala.Predef$.require(Predef.scala:233)[0m
+[31m  at Lab5$.step(Lab5.scala:246)[0m
+[31m  at Lab5$.step(Lab5.scala:309)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:362)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:360)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:129)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:127)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:117)[0m
+[31m  at Lab5$.iterateStep(Lab5.scala:371)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:28)[0m
+[31m  ...[0m
+[36mRun completed in 352 milliseconds.[0m
+[36mTotal number of tests run: 15[0m
+[36mSuites: completed 1, aborted 0[0m
+[36mTests: succeeded 0, failed 15, canceled 0, ignored 0, pending 0[0m
+[31m*** 15 TESTS FAILED ***[0m
+[0m[[32msuccess[0m] [0mTotal time: 14 s, completed Mar 31, 2014 8:57:47 PM[0m
+Loading /usr/share/sbt/bin/sbt-launch-lib.bash
+[0m[[0minfo[0m] [0mLoading project definition from /home/samuel/Documents/pl/CSCI-3155/lab5/project[0m
+[0m[[0minfo[0m] [0mSet current project to lab5 (in build file:/home/samuel/Documents/pl/CSCI-3155/lab5/)[0m
+[0m[[0minfo[0m] [0mSet current project to lab5-grader (in build file:/home/samuel/Documents/pl/CSCI-3155/lab5/)[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/samuel/Documents/pl/CSCI-3155/lab5/target/scala-2.10/classes...[0m
+[0m[[0minfo[0m] [0mRunning Lab5Grader [0m
+[36mRun starting. Expected test count is: 15[0m
+[32mLab5Grading:[0m
+[32mlab4-typeInfer/simple-programs[0m
+------------------------------------------------------------
+[Ref]Type checking: Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0)))) ...
+[Ref]Type: number
+------------------------------------------------------------
+Type checking: Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),Some(TNumber),If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0)))) ...
+Type: number
+------------------------------------------------------------
+[Ref]Type checking: Decl(MConst,x,N(1.0),Decl(MConst,g,Function(None,Left(List((y,TNumber))),None,Var(x)),Decl(MConst,h,Function(None,Left(List((x,TNumber))),None,Call(Var(g),List(N(2.0)))),Call(Var(h),List(N(3.0)))))) ...
+[Ref]Type: number
+------------------------------------------------------------
+Type checking: Decl(MConst,x,N(1.0),Decl(MConst,g,Function(None,Left(List((y,TNumber))),None,Var(x)),Decl(MConst,h,Function(None,Left(List((x,TNumber))),None,Call(Var(g),List(N(2.0)))),Call(Var(h),List(N(3.0)))))) ...
+Type: number
+[32m- should type check JavaScripty programs according to the lab spec[0m
+[32mlab4-typeInfer/recursive-programs[0m
+------------------------------------------------------------
+[Ref]Type checking: Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),Some(TNumber),If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(4.0)))) ...
+[Ref]Type: number
+------------------------------------------------------------
+Type checking: Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),Some(TNumber),If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(4.0)))) ...
+Type: number
+[32m- should type check recursive JavaScripty programs according to the lab spec[0m
+[32mlab4-substitute/shadow[0m
+[32m- should substitute a value for uses of a variable[0m
+[32mlab4-step/simple-programs[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0))))
+[Ref]Step 1:
+  Map()
+  Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(3.0)))
+[Ref]Step 2:
+  Map()
+  If(Binary(Eq,N(3.0),N(0.0)),N(0.1),Binary(Plus,N(3.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0))))))
+[Ref]Step 3:
+  Map()
+  If(B(false),N(0.1),Binary(Plus,N(3.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0))))))
+[Ref]Step 4:
+  Map()
+  Binary(Plus,N(3.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0)))))
+[Ref]Step 5:
+  Map()
+  Binary(Plus,N(3.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(2.0))))
+[Ref]Step 6:
+  Map()
+  Binary(Plus,N(3.0),If(Binary(Eq,N(2.0),N(0.0)),N(0.1),Binary(Plus,N(2.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0)))))))
+[Ref]Step 7:
+  Map()
+  Binary(Plus,N(3.0),If(B(false),N(0.1),Binary(Plus,N(2.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0)))))))
+[Ref]Step 8:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0))))))
+[Ref]Step 9:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(1.0)))))
+[Ref]Step 10:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),If(Binary(Eq,N(1.0),N(0.0)),N(0.1),Binary(Plus,N(1.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0))))))))
+[Ref]Step 11:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),If(B(false),N(0.1),Binary(Plus,N(1.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0))))))))
+[Ref]Step 12:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0)))))))
+[Ref]Step 13:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(0.0))))))
+[Ref]Step 14:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),If(Binary(Eq,N(0.0),N(0.0)),N(0.1),Binary(Plus,N(0.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(0.0),N(1.0)))))))))
+[Ref]Step 15:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),If(B(true),N(0.1),Binary(Plus,N(0.0),Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(Binary(Minus,N(0.0),N(1.0)))))))))
+[Ref]Step 16:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),Binary(Plus,N(1.0),N(0.1))))
+[Ref]Step 17:
+  Map()
+  Binary(Plus,N(3.0),Binary(Plus,N(2.0),N(1.1)))
+[Ref]Step 18:
+  Map()
+  Binary(Plus,N(3.0),N(3.1))
+[Ref]Result:
+  Map()
+  N(6.1)
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Decl(MConst,w,Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),Call(Var(w),List(N(3.0))))
+Step 1:
+  Map()
+  Call(Function(Some(w),Left(List((y,TNumber))),None,If(Binary(Eq,Var(y),N(0.0)),N(0.1),Binary(Plus,Var(y),Call(Var(w),List(Binary(Minus,Var(y),N(1.0))))))),List(N(3.0)))
+[31m- should evaluate JavaScripty programs according to the lab spec *** FAILED ***[0m
+[31m  jsy.lab5.ast$StuckError:[0m
+[31m  at Lab5$.step(Lab5.scala:364)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:477)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:475)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:130)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:128)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$map$1.apply(ast.scala:122)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$map$1.apply(ast.scala:121)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:118)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:130)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:128)[0m
+[31m  ...[0m
+[32mlab4-step/recursive-programs[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(3.0))))
+[Ref]Step 1:
+  Map()
+  Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(3.0)))
+[Ref]Step 2:
+  Map()
+  If(Binary(Eq,N(3.0),N(0.0)),N(1.0),Binary(Times,N(3.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0))))))
+[Ref]Step 3:
+  Map()
+  If(B(false),N(1.0),Binary(Times,N(3.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0))))))
+[Ref]Step 4:
+  Map()
+  Binary(Times,N(3.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(3.0),N(1.0)))))
+[Ref]Step 5:
+  Map()
+  Binary(Times,N(3.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(2.0))))
+[Ref]Step 6:
+  Map()
+  Binary(Times,N(3.0),If(Binary(Eq,N(2.0),N(0.0)),N(1.0),Binary(Times,N(2.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0)))))))
+[Ref]Step 7:
+  Map()
+  Binary(Times,N(3.0),If(B(false),N(1.0),Binary(Times,N(2.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0)))))))
+[Ref]Step 8:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(2.0),N(1.0))))))
+[Ref]Step 9:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(1.0)))))
+[Ref]Step 10:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),If(Binary(Eq,N(1.0),N(0.0)),N(1.0),Binary(Times,N(1.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0))))))))
+[Ref]Step 11:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),If(B(false),N(1.0),Binary(Times,N(1.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0))))))))
+[Ref]Step 12:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(1.0),N(1.0)))))))
+[Ref]Step 13:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(0.0))))))
+[Ref]Step 14:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),If(Binary(Eq,N(0.0),N(0.0)),N(1.0),Binary(Times,N(0.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(0.0),N(1.0)))))))))
+[Ref]Step 15:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),If(B(true),N(1.0),Binary(Times,N(0.0),Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(Binary(Minus,N(0.0),N(1.0)))))))))
+[Ref]Step 16:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),Binary(Times,N(1.0),N(1.0))))
+[Ref]Step 17:
+  Map()
+  Binary(Times,N(3.0),Binary(Times,N(2.0),N(1.0)))
+[Ref]Step 18:
+  Map()
+  Binary(Times,N(3.0),N(2.0))
+[Ref]Result:
+  Map()
+  N(6.0)
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Decl(MConst,factorial,Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),Call(Var(factorial),List(N(3.0))))
+Step 1:
+  Map()
+  Call(Function(Some(f),Left(List((n,TNumber))),None,If(Binary(Eq,Var(n),N(0.0)),N(1.0),Binary(Times,Var(n),Call(Var(f),List(Binary(Minus,Var(n),N(1.0))))))),List(N(3.0)))
+[31m- should evaluate recursive JavaScripty programs according to the lab spec *** FAILED ***[0m
+[31m  jsy.lab5.ast$StuckError:[0m
+[31m  at Lab5$.step(Lab5.scala:364)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:477)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:475)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:130)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:128)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$map$1.apply(ast.scala:122)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$map$1.apply(ast.scala:121)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:118)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:130)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:128)[0m
+[31m  ...[0m
+[32mlab4-step/objects[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Decl(MConst,pair,Function(None,Left(List((x,TNumber), (y,TNumber))),None,Obj(Map(x -> Var(x), y -> Var(y)))),Decl(MConst,p,Call(Var(pair),List(N(3.0), N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y))))
+[Ref]Step 1:
+  Map()
+  Decl(MConst,p,Call(Function(None,Left(List((x,TNumber), (y,TNumber))),None,Obj(Map(x -> Var(x), y -> Var(y)))),List(N(3.0), N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y)))
+[Ref]Step 2:
+  Map()
+  Decl(MConst,p,Obj(Map(x -> N(3.0), y -> N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y)))
+[Ref]Step 3:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  Decl(MConst,p,A(1),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y)))
+[Ref]Step 4:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  Binary(Plus,GetField(A(1),x),GetField(A(1),y))
+[Ref]Step 5:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  Binary(Plus,N(3.0),GetField(A(1),y))
+[Ref]Step 6:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  Binary(Plus,N(3.0),N(4.0))
+[Ref]Result:
+  Map(A(1) -> Obj(Map(x -> N(3.0), y -> N(4.0))))
+  N(7.0)
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Decl(MConst,pair,Function(None,Left(List((x,TNumber), (y,TNumber))),None,Obj(Map(x -> Var(x), y -> Var(y)))),Decl(MConst,p,Call(Var(pair),List(N(3.0), N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y))))
+Step 1:
+  Map()
+  Decl(MConst,p,Call(Function(None,Left(List((x,TNumber), (y,TNumber))),None,Obj(Map(x -> Var(x), y -> Var(y)))),List(N(3.0), N(4.0))),Binary(Plus,GetField(Var(p),x),GetField(Var(p),y)))
+[31m- should evaluate JavaScripty objects according to the lab spec *** FAILED ***[0m
+[31m  jsy.lab5.ast$StuckError:[0m
+[31m  at Lab5$.step(Lab5.scala:364)[0m
+[31m  at Lab5$.step(Lab5.scala:432)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:477)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:475)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:130)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:128)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$map$1.apply(ast.scala:122)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$map$1.apply(ast.scala:121)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:118)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:130)[0m
+[31m  ...[0m
+[32mcastOk[0m
+[32m- should permit widening and narrowing width of objects with casting[0m
+[32mtypeInfer/functions[0m
+------------------------------------------------------------
+Type checking: Function(None,Left(List((x,TNumber), (y,TNumber))),None,Var(x)) ...
+Type: (x: number, y: number) => number
+------------------------------------------------------------
+Type checking: Function(None,Right((PVar,x,TNumber)),None,Var(x)) ...
+Type: (var x: number) => number
+------------------------------------------------------------
+Type checking: Function(Some(f),Right((PRef,x,TNumber)),Some(TString),Call(Var(f),List(Var(x)))) ...
+Type: (ref x: number) => string
+------------------------------------------------------------
+Type checking: Call(Function(None,Left(List((x,TNumber), (y,TNumber))),None,Var(x)),List(N(3.0), Binary(Plus,Binary(Times,N(4.0),N(7.0)),N(10.0)))) ...
+Type: number
+------------------------------------------------------------
+Type checking: Call(Function(None,Left(List((x,TNumber), (y,TNumber))),None,Var(x)),List(N(3.0), Call(Function(None,Right((PVar,x,TNumber)),None,Var(x)),List(Binary(Plus,Binary(Times,N(4.0),N(7.0)),N(10.0)))))) ...
+Type: number
+------------------------------------------------------------
+Type checking: Decl(MVar,z,Binary(Plus,N(0.0),N(2.0)),Call(Function(Some(f),Right((PRef,x,TNumber)),Some(TString),Call(Var(f),List(Var(x)))),List(Var(z)))) ...
+Type: string
+[32m- should type check JavaScripty function expressions according to the lab spec[0m
+[32mtypeInfer/badcall[0m
+------------------------------------------------------------
+Type checking: Call(Function(None,Left(List((x,TNumber), (y,TNumber))),None,Var(x)),List(N(4.0))) ...
+------------------------------------------------------------
+Type checking: Call(Function(None,Right((PVar,x,TNumber)),None,Var(x)),List()) ...
+------------------------------------------------------------
+Type checking: Call(Function(Some(f),Right((PRef,x,TNumber)),Some(TString),Call(Var(f),List(Var(x)))),List(N(3.0))) ...
+[32m- should yield a static type error[0m
+[32mtypeInfer/badcast[0m
+------------------------------------------------------------
+Type checking: Unary(Cast(TNumber),B(true)) ...
+------------------------------------------------------------
+Type checking: Null ...
+[31m- should yield a static type error *** FAILED ***[0m
+[31m  Expected exception jsy.lab5.ast$StaticTypeError to be thrown, but scala.MatchError was thrown. (Lab5Grading.scala:197)[0m
+[32mtypeInfer/assign[0m
+[31m- should type check JavaScripty assignment expressions according to the lab spec *** FAILED ***[0m
+[31m  scala.MatchError: Null (of class jsy.lab5.ast$Null$)[0m
+[31m  at Lab5$.typeInfer(Lab5.scala:88)[0m
+[31m  at Lab5$.inferType(Lab5.scala:455)[0m
+[31m  at Lab5Grading$$anonfun$11$$anonfun$apply$mcV$sp$8.apply(Lab5Grading.scala:218)[0m
+[31m  at Lab5Grading$$anonfun$11$$anonfun$apply$mcV$sp$8.apply(Lab5Grading.scala:217)[0m
+[31m  at scala.collection.TraversableLike$WithFilter$$anonfun$foreach$1.apply(TraversableLike.scala:772)[0m
+[31m  at scala.collection.immutable.List.foreach(List.scala:318)[0m
+[31m  at scala.collection.TraversableLike$WithFilter.foreach(TraversableLike.scala:771)[0m
+[31m  at Lab5Grading$$anonfun$11.apply$mcV$sp(Lab5Grading.scala:217)[0m
+[31m  at Lab5Grading$$anonfun$11.apply(Lab5Grading.scala:217)[0m
+[31m  at Lab5Grading$$anonfun$11.apply(Lab5Grading.scala:217)[0m
+[31m  ...[0m
+[32mtypeInfer/badassign[0m
+------------------------------------------------------------
+Type checking: Assign(N(3.0),N(4.0)) ...
+[31m- should yield a static type error *** FAILED ***[0m
+[31m  Expected exception jsy.lab5.ast$StaticTypeError to be thrown, but scala.MatchError was thrown. (Lab5Grading.scala:229)[0m
+[32msubstitute/avoidcapture[0m
+[32m- should avoid capturing free variables[0m
+[32mstep/parampassing[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Decl(MVar,x,N(1.0),Decl(MConst,f,Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),Binary(Plus,Call(Var(f),List(Var(x))),Var(x))))
+[Ref]Step 1:
+  Map(A(1) -> N(1.0))
+  Decl(MConst,f,Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),Binary(Plus,Call(Var(f),List(Unary(Deref,A(1)))),Unary(Deref,A(1))))
+[Ref]Step 2:
+  Map(A(1) -> N(1.0))
+  Binary(Plus,Call(Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),List(Unary(Deref,A(1)))),Unary(Deref,A(1)))
+[Ref]Step 3:
+  Map(A(1) -> N(1.0))
+  Binary(Plus,Call(Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),List(N(1.0))),Unary(Deref,A(1)))
+[Ref]Step 4:
+  Map(A(1) -> N(1.0), A(2) -> N(1.0))
+  Binary(Plus,Assign(Unary(Deref,A(2)),Binary(Plus,Unary(Deref,A(2)),Unary(Deref,A(2)))),Unary(Deref,A(1)))
+[Ref]Step 5:
+  Map(A(1) -> N(1.0), A(2) -> N(1.0))
+  Binary(Plus,Assign(Unary(Deref,A(2)),Binary(Plus,N(1.0),Unary(Deref,A(2)))),Unary(Deref,A(1)))
+[Ref]Step 6:
+  Map(A(1) -> N(1.0), A(2) -> N(1.0))
+  Binary(Plus,Assign(Unary(Deref,A(2)),Binary(Plus,N(1.0),N(1.0))),Unary(Deref,A(1)))
+[Ref]Step 7:
+  Map(A(1) -> N(1.0), A(2) -> N(1.0))
+  Binary(Plus,Assign(Unary(Deref,A(2)),N(2.0)),Unary(Deref,A(1)))
+[Ref]Step 8:
+  Map(A(1) -> N(1.0), A(2) -> N(2.0))
+  Binary(Plus,N(2.0),Unary(Deref,A(1)))
+[Ref]Step 9:
+  Map(A(1) -> N(1.0), A(2) -> N(2.0))
+  Binary(Plus,N(2.0),N(1.0))
+[Ref]Result:
+  Map(A(1) -> N(1.0), A(2) -> N(2.0))
+  N(3.0)
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Decl(MVar,x,N(1.0),Decl(MConst,f,Function(None,Right((PVar,x,TNumber)),None,Assign(Var(x),Binary(Plus,Var(x),Var(x)))),Binary(Plus,Call(Var(f),List(Var(x))),Var(x))))
+[31m- should evaluate JavaScripty parameter passing according to the lab spec *** FAILED ***[0m
+[31m  java.lang.UnsupportedOperationException:[0m
+[31m  at Lab5$.substitute(Lab5.scala:285)[0m
+[31m  at Lab5$.Lab5$$subst$1(Lab5.scala:260)[0m
+[31m  at Lab5$.substitute(Lab5.scala:270)[0m
+[31m  at Lab5$$anonfun$step$6.apply(Lab5.scala:371)[0m
+[31m  at Lab5$$anonfun$step$6.apply(Lab5.scala:371)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$map$1.apply(ast.scala:123)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$map$1.apply(ast.scala:121)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:129)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:128)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:118)[0m
+[31m  ...[0m
+[32mstep/assign[0m
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Result:
+  Map()
+  Null
+------------------------------------------------------------
+Evaluating with step ...
+Result:
+  Map()
+  Null
+------------------------------------------------------------
+[Ref]Evaluating with step ...
+[Ref]Step 0:
+  Map()
+  Unary(Cast(TInterface(Top,TObj(Map()))),Null)
+[Ref]Result:
+  Map()
+  Null
+------------------------------------------------------------
+Evaluating with step ...
+Step 0:
+  Map()
+  Unary(Cast(TInterface(Top,TObj(Map()))),Null)
+[31m- should evaluate JavaScripty assignment expressions according to the lab spec *** FAILED ***[0m
+[31m  java.lang.IllegalArgumentException: requirement failed: stepping on a value: Null[0m
+[31m  at scala.Predef$.require(Predef.scala:233)[0m
+[31m  at Lab5$.step(Lab5.scala:299)[0m
+[31m  at Lab5$.step(Lab5.scala:407)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:477)[0m
+[31m  at Lab5$$anonfun$Lab5$$loop$1$2.apply(Lab5.scala:475)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:130)[0m
+[31m  at jsy.lab5.ast$DoWith$$anonfun$flatMap$1.apply(ast.scala:128)[0m
+[31m  at jsy.lab5.ast$DoWith.apply(ast.scala:118)[0m
+[31m  at Lab5$.iterateStep(Lab5.scala:486)[0m
+[31m  at Lab5Grading.assertRefIterateStep(Lab5Grading.scala:28)[0m
+[31m  ...[0m
+[36mRun completed in 358 milliseconds.[0m
+[36mTotal number of tests run: 15[0m
+[36mSuites: completed 1, aborted 0[0m
+[36mTests: succeeded 7, failed 8, canceled 0, ignored 0, pending 0[0m
+[31m*** 8 TESTS FAILED ***[0m
+[0m[[32msuccess[0m] [0mTotal time: 14 s, completed Apr 2, 2014 9:24:39 PM[0m
