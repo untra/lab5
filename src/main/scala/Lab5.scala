@@ -91,6 +91,7 @@ object Lab5 extends jsy.util.JsyApplication {
       case B(_) => TBool
       case Undefined => TUndefined
       case S(_) => TString
+      case Null => TNull
       case Var(x) =>
         val (_, t) = env(x)
         t
@@ -156,7 +157,8 @@ object Lab5 extends jsy.util.JsyApplication {
       case GetField(e1, f) => typ(e1) match {
         case TObj(tfields) if (tfields.contains(f)) => tfields(f)
         case tgot => err(tgot, e1)
-      } 
+      }
+
       
       case Function(p, paramse, tann, e1) => {
         // Bind to env1 an environment that extends env with an appropriate binding if
@@ -227,6 +229,17 @@ object Lab5 extends jsy.util.JsyApplication {
       
       /*** Fill-in more cases here. ***/
         
+      case Assign(e1, e2) => e1 match{
+        case S(s) => typeInfer(env + (s -> (MVar, typ(e2))), e2)
+        case _ => err(typ(e1), e2)
+      }
+
+
+      case Unary(Cast(e1), e2) => (castOk(typ(e2), e1)) match{
+        case true => e1;
+        case false => err(typ(e2), e2);
+        }
+      
       /* Should not match: non-source expressions or should have been removed */
       case A(_) | Unary(Deref, _) | InterfaceDecl(_, _, _) => throw new IllegalArgumentException("Gremlins: Encountered unexpected expression %s.".format(e))
     }
@@ -268,24 +281,22 @@ object Lab5 extends jsy.util.JsyApplication {
       case If(e1, e2, e3) => If(subst(e1), subst(e2), subst(e3))
       case Var(y) => if (x == y) esub else e
       case Decl(mut, y, e1, e2) => Decl(mut, y, subst(e1), if (x == y) e2 else subst(e2))
-      case Function(p, paramse, retty, e1) => paramse match
-        {
-    	  //old fashioned list of (typ, expr)
-          case Left(params) => {
-              //checks the names of each paramter, if the name matches with x, returns the function, 
-        	  if (params.exists((t1: (String, Typ)) => t1._1 == x) || Some(x) == p) {
-        		  e
-        	  } else {
-        		  //otherwise it recurses on the body of the function
-        		  Function(p, paramse, retty, subst(e1))
-        	  }
+      case Function(p, paramse, retty, e1) =>{
+        val re = paramse match {
+            case Left(params) => params.foldLeft(0: Int){
+        	(re: Int, c: (String, Typ)) => c match{
+        	  case (x2, t) if (x == x2) => re + 1
+        	  case (x2, t) => re}
           }
-          //new mode, x/t mode
-          case Right((mode,x,t)) => {
-        	  throw new UnsupportedOperationException
-            
-          }
+          case Right(params) => throw new UnsupportedOperationException;
         }
+        if (p == Some(x) || (re != 0)){
+          Function(p, paramse, retty, e1)
+        }
+        else{
+          Function(p, paramse, retty, subst(e1))
+        }
+      }
       case Call(e1, args) => Call(subst(e1), args map subst)
       case Obj(fields) => Obj(fields map { case (fi,ei) => (fi, subst(ei)) })
       case GetField(e1, f) => GetField(subst(e1), f)
@@ -361,8 +372,56 @@ object Lab5 extends jsy.util.JsyApplication {
         }
         (v1, args) match {
           /*** Fill-in the DoCall cases, the SearchCall2, the SearchCallVar, the SearchCallRef  ***/
-          case _ => throw StuckError(e)
-        } 
+          
+        case (func @ Function(p, Left(params), _, e1), args) => doreturn({
+        	  //pattern match on the function name. If it is defined, substitute on its body, replacing every instance of it's name with itself
+        		val bp = p match {
+        		case Some(f) => substitute(e1, func, f)
+        		case None => e1
+        		}
+        		
+        		//combine the params (string, type) tuple with the corresponding expression argument, 
+        		//and foldleft with the established initial value bp
+        		params.zip(args).foldLeft(bp){
+        			//in the accumulator, replace every instance of the argument name with it's corresponding expression
+        			(e1: Expr, t1: ((String, Typ), Expr)) => substitute(e1, t1._2, t1._1._1)
+        		}
+        	})
+        		
+        		
+        		
+        		
+//        	  val re = params match {
+//        	    case Left(parameters) => {
+//        	        //good stuff
+//        	    	parameters.foreach { (x1,t1) => 
+//        	    	val witha = Mem.alloc(v2)
+//        	    	witha map {a => substitute()}
+//        	  }
+//        	  // good stuff
+//        	    }
+//        	  }
+//        	  case Right(mode,x,t) => {
+//        	    
+//        	  }
+        	
+        	case (func @ Function(p, Right((PVar,x,_)), _, e1), v2 :: Nil) if isValue(v2) => {
+        		Mem.alloc(v2) map {a => substfun(substitute(e1, Unary(Deref, a), x), p)}
+        	}
+        	
+        	case (func @ Function(p, Right((PRef,x,_)), _, e1), lv2 :: Nil) if isLValue(lv2) => {
+        		//Mem.alloc(v2) map {a => substfun(substitute(e1, Unary(Deref, a), x), p)}
+        		doreturn( substfun(substitute(e1, lv2, x), p) )
+        	}
+        	
+        	case (func @ Function(p, Right((PName,x,_)), _, e1), e2 :: Nil) => {
+        		//Mem.alloc(v2) map {a => substfun(substitute(e1, Unary(Deref, a), x), p)}
+        		doreturn( substfun(substitute(e1, e2, x), p) )
+        	}
+        	
+        	case _ => throw StuckError(e)
+
+        }
       
       case Decl(MConst, x, v1, e2) if isValue(v1) => doreturn(substitute(e2, v1, x))
 
