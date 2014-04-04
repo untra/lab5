@@ -34,6 +34,18 @@ object Lab5 extends jsy.util.JsyApplication {
   
   /*** Helper: mapFirst to DoWith ***/
   
+//  def mapFirst[A](f: A => Option[A])(l: List[A]): List[A] = l match {
+//	//return if the list is nil
+//    case Nil => l
+//    //if the list is a h :: t list, apply the function to the head of the list and pattern match
+//    case h :: t => f(h) match {
+//      //if some(x) return the modified list
+//      case Some(x) => x :: t
+//      //otherwise try modifying the second element
+//      case None => h :: mapFirst(f)(t)
+//    }
+//  }
+  
   // Just like mapFirst from Lab 4 but uses a callback f that returns a DoWith in the Some case.
   def mapFirstWith[W,A](f: A => Option[DoWith[W,A]])(l: List[A]): DoWith[W,List[A]] = l match {
     case Nil => doreturn(l)
@@ -43,25 +55,21 @@ object Lab5 extends jsy.util.JsyApplication {
     }
   }
 
+
   /*** Casting ***/
-  //can t1 be cast to t2
+  
   def castOk(t1: Typ, t2: Typ): Boolean = (t1, t2) match {
     case (TNull, TObj(_)) => true
     case (_, _) if (t1 == t2) => true
-        case (TObj(fields1), TObj(fields2)) =>  fields1.forall{
-    //takes in all of the fields for two objects, goes through all of the fields of the first object
-      case(alpha,beta) if (beta == None) => true
-      //if beta isn't anything, we can just return true
-      case(alpha,beta) => fields2.get(alpha) match { 
-      //if beta is something, we get it and check if there is an alpha field
-        case None => true 
-        //if there isn't, we return ok
-        case Some(gamma) => castOk(beta,gamma)
-        //if it is, then we look further and compare beta with a new gamma. 
+    //If two objects with fields, iterate through the first object's fields
+    //Retrieve the type of the object being cast to and recursively test if
+    //The two types are compatible
+    case (TObj(fields1), TObj(fields2)) => fields1.forall{
+      case (a,b) if (b == None) => true
+      case (a,b) => fields2.get(a) match{
+        case None => true
+        case Some(c) => castOk(b, c)
       }
-    
-      
-      
     }
     case (TInterface(tvar, t1p), _) => castOk(typSubstitute(t1p, t1, tvar), t2)
     case (_, TInterface(tvar, t2p)) => castOk(t1, typSubstitute(t2p, t2, tvar))
@@ -159,7 +167,10 @@ object Lab5 extends jsy.util.JsyApplication {
         case tgot => err(tgot, e1)
       }
 
-      
+      //TypeDecl
+      case Decl(mode, x, e1, e2) => typeInfer(env + (x -> (mode, typ(e1))), e2)
+
+      //TypeFunction(s)
       case Function(p, paramse, tann, e1) => {
         // Bind to env1 an environment that extends env with an appropriate binding if
         // the function is potentially recursive.
@@ -170,67 +181,66 @@ object Lab5 extends jsy.util.JsyApplication {
           case (None, _) => env
           case _ => err(TUndefined, e1)
         }
+
         // Bind to env2 an environment that extends env1 with the parameters.
-        val env2 = paramse match {
-        //
+        // Using either such that left replaces None and Right replaces some
+        // Foreach returns a unit, in order to get the proper return type
+        // of a map, we store env1 in env2 then use foreach to modify env2
+        // on each iteration then throw out the final return unit type
+        val env2 =
+        paramse match {
           case Left(params) => params.foldLeft(env1){
-            case(env_iter,par_iter) => par_iter match{
-              case(alpha,beta) => env_iter + (alpha -> (MConst,beta))
+            //envit is the iteration of env1, parit is the iteration of params
+          	case (envit, parit) => parit match{
+          	  case (a, b) => envit + (a -> (MConst, b))
             }
           }
           case Right((mode,x,t)) => mode match{
-            case PName => env1 + (x -> (MConst,t))
-            case _ => env1 + (x -> (MVar,t))
+            case PName => env1 + (x -> (MConst, t))
+            case _ => env1 + (x -> (MVar, t))
           }
         }
+
         // Infer the type of the function body
         val t1 = typeInfer(env2, e1)
         tann foreach { rt => if (rt != t1) err(t1, e1) };
         TFunction(paramse, t1)
       }
-      //Q: What is Mut mean on the info sheet 
-      //***TypeDecl***
-      //We run the typeInfer on the modifed envrionment, with e2 ultimately maped to the type of mut x
-      case Decl(mode,x,e1,e2) => typeInfer(env+(x->(mode,typ(e1))),e2)
-      
+
       case Call(e1, args) => typ(e1) match {
-        case TFunction(Left(params), tret) if (params.length == args.length) => {
-          (params, args).zipped.foreach { (p, a) =>
-            val argType = typ(a)
-            if(p._2 != argType) err(argType, a)
+        //If left, then by default all are MConst
+      	case TFunction(Left(params), tret) if (params.length == args.length) => {
+          (params, args).zipped.foreach {
+            case ((x, t), ex) => if (t != typ(ex)) err(t, ex)
           }
           tret
         }
-//        case tgot @ TFunction(Right((mode,_,tparam)), tret) =>
-//          val arg = args match {
-//            case h :: t => h
-//            case _ => err(TUndefined,e1)
-//          }
-//          if (tparam == typ(arg)) tret else err(tgot,e1) 
-        //alex code
-        //Right = different mode 
+      	//If right, then the mode is defined
         case tgot @ TFunction(Right((mode,_,tparam)), tret) => mode match{
-          case not_enough_args_err if (args.length == 0) => err(tparam,e1)
-          //if we don't have enough args return an error 
-          
-          case (PName | PVar) => args.head match {
-          	case e => if (tparam == typ(e)) typ(e) else err(tparam, e1)
-           //check to make sure the the type of parameters match what s given 
+          case badcall if (args.length == 0) => err(tparam, e1)
+          case (PName | PVar) => args.head match{
+            case e => if (tparam == typ(e)) typ(e) else err(tparam, e1)
           }
-          //WTF is this madness 
           case PRef => args.head match{
-              case a => if (isLExpr(a) &&  tparam == typ(a)) tret else err(tparam, e1)
+            case a => if (isLExpr(a) &&  tparam == typ(a)) tret else err(tparam, e1)
           }
         }
-        
         case tgot => err(tgot, e1)
       }
-      case null => TNull
-      
-      /*** Fill-in more cases here. ***/
-        
+
       case Assign(e1, e2) => e1 match{
-        case S(s) => typeInfer(env + (s -> (MVar, typ(e2))), e2)
+        case Var(x) => env.get(x) match {
+          case Some((MConst, t)) => err(typ(e1), e2)
+          case Some((MVar, t)) => if (t == typ(e2)) {
+        	  typeInfer(env + (x -> (MVar, typ(e2))), e2)
+          	} else{
+          		err(typ(e1), e2)
+          	}  
+          case _ => typeInfer(env + (x -> (MVar, typ(e2))), e2)
+        }
+        case GetField(x1, f) => typ(e1) match {
+          case t => typeInfer(env + (f -> (MConst, typ(e1))), e2)
+        }
         case _ => err(typ(e1), e2)
       }
 
@@ -239,7 +249,8 @@ object Lab5 extends jsy.util.JsyApplication {
         case true => e1;
         case false => err(typ(e2), e2);
         }
-      
+
+
       /* Should not match: non-source expressions or should have been removed */
       case A(_) | Unary(Deref, _) | InterfaceDecl(_, _, _) => throw new IllegalArgumentException("Gremlins: Encountered unexpected expression %s.".format(e))
     }
@@ -271,7 +282,6 @@ object Lab5 extends jsy.util.JsyApplication {
   /* Capture-avoiding substitution in e replacing variables x with esub. */
   def substitute(e: Expr, esub: Expr, x: String): Expr = {
     def subst(e: Expr): Expr = substitute(e, esub, x)
-    //avoid capture takes in the set of all free variables, and renames them, prevent e from matching these variables.
     val ep: Expr = avoidCapture(freeVars(esub), e)
     ep match {
       case N(_) | B(_) | Undefined | S(_) | Null | A(_) => e
@@ -281,16 +291,16 @@ object Lab5 extends jsy.util.JsyApplication {
       case If(e1, e2, e3) => If(subst(e1), subst(e2), subst(e3))
       case Var(y) => if (x == y) esub else e
       case Decl(mut, y, e1, e2) => Decl(mut, y, subst(e1), if (x == y) e2 else subst(e2))
-      case Function(p, paramse, retty, e1) =>{
-        val re = paramse match {
-            case Left(params) => params.foldLeft(0: Int){
-        	(re: Int, c: (String, Typ)) => c match{
-        	  case (x2, t) if (x == x2) => re + 1
-        	  case (x2, t) => re}
+      case Function(p, paramse, retty, e1) => {
+        val ret = paramse match{
+          case Left(params) => params.foldLeft(0: Int){
+        	(ret: Int, c: (String, Typ)) => c match{
+        	  case (x2, t) if (x == x2) => ret + 1
+        	  case (x2, t) => ret}
           }
-          case Right(params) => throw new UnsupportedOperationException;
+          case Right(params) => 0
         }
-        if (p == Some(x) || (re != 0)){
+        if (p == Some(x) || (ret != 0)){
           Function(p, paramse, retty, e1)
         }
         else{
@@ -339,11 +349,7 @@ object Lab5 extends jsy.util.JsyApplication {
       case Binary(Times, N(n1), N(n2)) => doreturn( N(n1 * n2) )
       case Binary(Div, N(n1), N(n2)) => doreturn( N(n1 / n2) )
       case If(B(b1), e2, e3) => doreturn( if (b1) e2 else e3 )
-      	//DoObject
-      case Obj(fields) if (fields forall { case (_, vi) => isValue(vi)}) => {
-        val memf = Mem.alloc(Obj(fields))
-        memf.map(a => a)
-      }
+
         //DoGetField
       case GetField(a @ A(_), f) => {
         println("DOGETFIELD");
@@ -387,23 +393,6 @@ object Lab5 extends jsy.util.JsyApplication {
         			(e1: Expr, t1: ((String, Typ), Expr)) => substitute(e1, t1._2, t1._1._1)
         		}
         	})
-        		
-        		
-        		
-        		
-//        	  val re = params match {
-//        	    case Left(parameters) => {
-//        	        //good stuff
-//        	    	parameters.foreach { (x1,t1) => 
-//        	    	val witha = Mem.alloc(v2)
-//        	    	witha map {a => substitute()}
-//        	  }
-//        	  // good stuff
-//        	    }
-//        	  }
-//        	  case Right(mode,x,t) => {
-//        	    
-//        	  }
         	
         	case (func @ Function(p, Right((PVar,x,_)), _, e1), v2 :: Nil) if isValue(v2) => {
         		Mem.alloc(v2) map {a => substfun(substitute(e1, Unary(Deref, a), x), p)}
@@ -419,6 +408,19 @@ object Lab5 extends jsy.util.JsyApplication {
         		doreturn( substfun(substitute(e1, e2, x), p) )
         	}
         	
+        	//search rules
+        	
+        	case (func @ Function(p, Right((PVar,x,_)), _, e1), e2 :: Nil) => {
+        		//Mem.alloc(v2) map {a => substfun(substitute(e1, Unary(Deref, a), x), p)}
+        		step(e2) map {e2p => Call(v1, e2p :: Nil)}
+        	}
+        	
+        	case (func @ Function(p, Right((PRef,x,_)), _, e1), e2 :: Nil) => {
+        		//Mem.alloc(v2) map {a => substfun(substitute(e1, Unary(Deref, a), x), p)}
+        		step(e2) map {e2p => Call(v1, e2p :: Nil)}
+        	}
+        	
+        	
         	case _ => throw StuckError(e)
 
         }
@@ -430,32 +432,32 @@ object Lab5 extends jsy.util.JsyApplication {
         witha map {a => substitute(e2, Unary(Deref, a),x )}
       }
 
+      
+      case Unary(Deref, a @ A(_)) => {
+        doget.map( (ap: Mem) => ap.apply(a))
+      }
+      
       case Assign(Unary(Deref, a @ A(_)), v) if isValue(v) =>
         for (_ <- domodify { (m: Mem) => m.+(a, v) }) yield v
 
-        
+        //DoCast && DoCastNull
+      case Unary(Cast(t), e1) if isValue(e1) => t match {
+        case TNull => doreturn(null)
+        case _=> doreturn(e1)
+      }
+      
+            	//DoObject
+      case Obj(fields) if (fields forall { case (_, vi) => isValue(vi)}) => {
+        val memf = Mem.alloc(Obj(fields))
+        memf.map(a => a)
+      }
         
         //case Print(v1) if isValue(v1) => for (m <- doget) yield { println(pretty(m, v1)); Undefined }
       //case Print(v1) if isValue(v1) => doget.map {m => println(pretty(m, v1)); Undefined}
       /*** Fill-in more Do cases here. ***/
-//      case Var(x) =>  Mem.a
-//      
-//      case Decl(MConst, x, v1, e2) if isValue(v1) => {
-//        (m, substitute(e2, v1, x))
-//      }
-//      case Decl(MConst, x, e1, e2) => {
-//        val (m_temp, e_temp) = step(m, e1)
-//		(m_temp, Decl(MConst, x, e_temp, e2))
-//      }
-//      case Decl(MVar, x, v1, e2) if isValue(v1) => {
-//        val a = Mem.alloc(v1)
-//		val e_sub = substitute(e2, Unary(Deref, a), x)
-//		(m_temp, e_sub)
-//      }
-//      case Decl(MVar, x, e1, e2) => {
-//        val (m_temp, e_temp) = step(m, e1)
-//		(m_temp, Decl(Var, x, e_temp, e2))
-//      }
+
+
+      
       /* Base Cases: Error Rules */
       /*** Fill-in cases here. ***/
         
@@ -476,15 +478,6 @@ object Lab5 extends jsy.util.JsyApplication {
         case None => throw StuckError(e)
       }
       
-      case GetField(e1, f) => e1 match {
-        case Obj(fields) => {
-          Mem.alloc(Obj(fields)).map((a: A) => GetField(a, f))
-        }
-        case _ => {
-          for (e1p <- step(e1)) yield GetField(e1p, f)
-        }
-      }
-      
       /*** Fill-in more Search cases here. ***/
 
       case Decl(mut, x, e1, e2) => {
@@ -494,8 +487,12 @@ object Lab5 extends jsy.util.JsyApplication {
         for (e1p <- step(e1)) yield Call(e1p, e2)
       }
       case Assign(e1, e2) => {
-        for (e2p <- step(e2)) yield Assign(e1, e2)
+        for (e2p <- step(e2)) yield Assign(e1, e2p)
       }
+      
+//      case Assign(v1, e2) => {
+//        for (e2p <- step(e2)) yield Assign(v1, e2p)
+//      }
       /* Everything else is a stuck error. */
       case _ => throw StuckError(e)
     }
